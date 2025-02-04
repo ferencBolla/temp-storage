@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Server</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchFileList();
+        });
+
+        async function fetchFileList() {
+            const response = await fetch(".");
+            const text = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, "text/html");
+            const links = Array.from(doc.querySelectorAll("a"));
+
+            const fileList = links
+                .map(link => link.href)
+                .filter(href => !href.includes("index.html")) // Exclude index.html
+                .map(href => href.split("/").pop()) // Get filename only
+                .filter(filename => filename); // Remove empty filenames
+
+            const listContainer = document.getElementById("file-list");
+            if (fileList.length === 0) {
+                listContainer.innerHTML = "<p>No files found.</p>";
+            } else {
+                fileList.forEach(file => {
+                    const listItem = document.createElement("li");
+                    const link = document.createElement("a");
+                    link.href = file;
+                    link.textContent = file;
+                    link.setAttribute("download", file);
+                    listItem.appendChild(link);
+                    listContainer.appendChild(listItem);
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Available Files</h1>
+    <ul id="file-list">
+        <li>Loading...</li>
+    </ul>
+</body>
+</html>
