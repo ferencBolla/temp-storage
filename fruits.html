@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Fruits - Fruity Delights</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Fruity Delights</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fruits.html">Fruits</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="fruit-list">
+      <h2>Our Selection of Fruits</h2>
+
+      <div class="fruit-card">
+        <img src="https://via.placeholder.com/200?text=Apple" alt="Apple" />
+        <h3>Apple</h3>
+        <p>Apples are nutritious and delicious, packed with antioxidants.</p>
+        <button onclick="showFruitDetail('Apple', 'Apples are rich in fiber and vitamin C, making them a healthy snack choice.')">
+          Learn More
+        </button>
+      </div>
+
+      <div class="fruit-card">
+        <img src="https://via.placeholder.com/200?text=Banana" alt="Banana" />
+        <h3>Banana</h3>
+        <p>Bananas are a great source of potassium and energy.</p>
+        <button onclick="showFruitDetail('Banana', 'Bananas provide quick energy and are easy to digest.')">
+          Learn More
+        </button>
+      </div>
+
+      <div class="fruit-card">
+        <img src="https://via.placeholder.com/200?text=Cherry" alt="Cherry" />
+        <h3>Cherry</h3>
+        <p>Cherries are not only delicious but also loaded with vitamins and antioxidants.</p>
+        <button onclick="showFruitDetail('Cherry', 'Cherries have anti-inflammatory properties and are rich in antioxidants.')">
+          Learn More
+        </button>
+      </div>
+    </section>
+
+    <!-- Modal for displaying fruit details -->
+    <div id="fruitModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modalTitle">Fruit Detail</h3>
+        <p id="modalContent"></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Fruity Delights. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
